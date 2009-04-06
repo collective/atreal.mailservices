@@ -1,0 +1,53 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="atreal.mailservices">
+    
+    <browser:resource
+        name="mailservices_icon.png"
+        image="mailservices_icon.png"
+        />
+
+    <browser:resource
+        name="atreal.mailservices.kss"
+        file="mailservices.kss"
+        />
+
+    <browser:page
+        for="*"
+        name="mailservices"
+        template="mailservices.pt"
+        class=".mailservices.MailServicesView"
+        permission="atreal.mailservices.UseMailServices"
+        layer="..interfaces.IMailServicesLayer"
+        />
+
+    <browser:page
+        for="*"
+        class=".mailservices.KSSMailServicesView"
+        name="updateSearchGroup"
+        attribute="updateSearchGroup"
+        permission="atreal.mailservices.UseMailServices"
+        layer="..interfaces.IMailServicesLayer"
+        />
+      
+    <browser:page
+        for="*"
+        class=".mailservices.KSSMailServicesView"
+        name="updateSearchUser"
+        attribute="updateSearchUser"
+        permission="atreal.mailservices.UseMailServices"
+        layer="..interfaces.IMailServicesLayer"
+        />
+
+   <adapter factory=".controlpanel.MailServicesControlPanelAdapter" />
+
+    <browser:page
+        name="mailservices-controlpanel"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".controlpanel.MailServicesControlPanel"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IMailServicesLayer"
+        />
+        
+</configure>

@@ -1,0 +1,71 @@
+/*  Selector for the mailservices page the search_term parameters,
+puts the needed info into the request
+ */
+
+#mailservices-save-group-button:click {
+  evt-click-preventdefault: true;
+  action-server: updateSearchGroup;
+  updateSearchGroup-kssSubmitForm: currentForm();
+  updateSearchGroup-error: plone-submitCurrentForm;
+}
+
+#mailservices-searchall-group-button:click {
+  evt-click-preventdefault: true;
+  action-server: updateSearchGroup;
+  updateSearchGroup-type: kssAttr(type);
+  updateSearchGroup-kssSubmitForm: currentForm();
+  updateSearchGroup-error: plone-submitCurrentForm;
+}
+
+#mailservices-group-search:keydown {
+    evt-keydown-preventdefault: true;
+    evt-keydown-keycodes: 13;
+    action-client: log;
+}
+
+#mailservices-group-search:keypress {
+    evt-keypress-preventdefault: true;
+    evt-keypress-keycodes: 13;
+    action-client: log;
+}
+
+#mailservices-group-search:keyup {
+  evt-keyup-preventdefault: true;
+  evt-keyup-keycodes: 13;
+  action-server: updateSearchGroup;
+  updateSearchGroup-kssSubmitForm: currentForm();
+}
+
+#mailservices-save-user-button:click {
+  evt-click-preventdefault: true;
+  action-server: updateSearchUser;
+  updateSearchUser-kssSubmitForm: currentForm();
+  updateSearchUser-error: plone-submitCurrentForm;
+}
+
+#mailservices-searchall-user-button:click {
+  evt-click-preventdefault: true;
+  action-server: updateSearchUser;
+  updateSearchUser-type: kssAttr(type);
+  updateSearchUser-kssSubmitForm: currentForm();
+  updateSearchUser-error: plone-submitCurrentForm;
+}
+
+#mailservices-user-search:keydown {
+    evt-keydown-preventdefault: true;
+    evt-keydown-keycodes: 13;
+    action-client: log;
+}
+
+#mailservices-user-search:keypress {
+    evt-keypress-preventdefault: true;
+    evt-keypress-keycodes: 13;
+    action-client: log;
+}
+
+#mailservices-user-search:keyup {
+  evt-keyup-preventdefault: true;
+  evt-keyup-keycodes: 13;
+  action-server: updateSearchUser;
+  updateSearchUser-kssSubmitForm: currentForm();
+}

@@ -1,0 +1,323 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="context/@@standard_macros/page"
+      i18n:domain="atreal.mailservices">
+
+<head>
+</head>
+
+<body>
+<div metal:fill-slot="body"
+     tal:define="context_state context/@@plone_context_state;
+                 email_from_address portal/email_from_address">
+
+    <h1 class="documentFirstHeading"
+        i18n:translate="heading_mailservices_control">
+        Mail services for
+        "<span tal:content="context/Title" tal:omit-tag="" i18n:name="object">title</span>"
+    </h1>
+
+    <a href=""
+       class="link-parent"
+       tal:attributes="href context/absolute_url"
+       i18n:domain="plone"
+       i18n:translate="go_to_contentrules_assignment_context">
+        Return
+    </a>
+
+    <div tal:condition="not:email_from_address">
+
+        <p class="documentDescription"
+           i18n:domain="plone"
+           i18n:translate="text_no_email_setup">
+            This site doesn't have a valid email setup, so you cannot use
+            any contact forms. 
+        </p>
+
+    </div>
+
+    <div tal:condition="email_from_address">
+        
+    <p class="documentDescription"
+       i18n:translate="description_mailservices">
+        Fill the three tabs and valid the form to send an email.
+    </p>
+
+    <form method="post"
+          class="enableFormTabbing"
+          tal:attributes="action string:${context/absolute_url}/@@mailservices">
+
+        <input type="hidden" name="form.submitted:boolean" value="True" />
+    
+        <fieldset id="fieldset-groups-users"
+                  class="formPanel">
+            <legend id="fieldsetlegend-groups-users"
+                    i18n:translate="">Groups & Users</legend>
+            
+            <div class="field">
+                <label i18n:translate="">Groups</label>
+                <div class="formHelp"
+                     i18n:translate="help_groups">
+                    Select groups to send mail.</div>
+
+                <div class="field">
+                    <input type="text" 
+                           id="mailservices-group-search"
+                           size="30" 
+                           name="search_group_term"
+                           title="Search for group" 
+                           i18n:attributes="title"
+                           class="searchField inputLabel"
+                           value="" 
+                           />
+                    <input type="submit"
+                           id="mailservices-save-group-button" 
+                           name="form.button.Search"
+                           value="Search"
+                           class="searchButton allowMultiSubmit" 
+                           i18n:attributes="value box_search"
+                           />
+                    <input type="submit"
+                           id="mailservices-searchall-group-button" 
+                           class="searchButton allowMultiSubmit kssattr-type-searchallgroup"
+                           name="form.button.FindAllGroups"
+                           value="Show all"
+                           i18n:attributes="value label_showall;"
+                           tal:condition="not:site_properties/many_groups"
+                           />
+                </div>
+            
+                <table metal:define-macro="group-mailservices" id="group-mailservices"
+                       class="listing"
+                       summary="Current mailservices recipients groups" 
+                       i18n:attributes="summary summary_mailservices_recipients_groups;"
+                       tal:define="group_settings view/groups_settings;
+                                   recipients view/recipients">
+                    
+                    <thead metal:define-macro="group-mailservices-head" id="group-mailservices-head">
+                        <tr tal:condition="python:len(recipients) > 0">
+                            <th i18n:translate="label_group">Group</th>
+                            <th class="nosort"
+                                tal:repeat="recipient recipients"
+                                tal:content="recipient/title"  />
+                        </tr>
+                    </thead>
+                    
+                    <tbody metal:define-macro="group-mailservices-settings" id="group-mailservices-settings">
+                        <tal:entries repeat="entry group_settings">
+                            <tr tal:define="disabled entry/disabled | python:False;
+                                            oddrow repeat/entry/odd;"
+                                tal:attributes="class python:oddrow and 'odd' or 'even'">
+                                <td>
+                                    <img tal:replace="structure context/group.gif" /> 
+                                    <span tal:replace="entry/title" />
+                                    <input
+                                        tal:condition="not:disabled"
+                                        type="hidden"
+                                        name="groups.id:records"
+                                        tal:attributes="value entry/id"
+                                        />
+                                    <input
+                                        tal:condition="not:disabled"
+                                        type="hidden"
+                                        name="groups.title:records"
+                                        tal:attributes="value entry/title"
+                                        />
+                                </td>
+                                <td class="listingCheckbox"
+                                    tal:repeat="recipient recipients">
+                                    <tal:block define="entry_recipient python:entry['recipients'][recipient['id']]">
+                                        <tal:block condition="python:entry_recipient in (True, False)">
+                                            <input class="noborder"
+                                                type="checkbox"
+                                                value="True"
+                                                tal:attributes="name string:groups.recipient_${recipient/id}:records;
+                                                                checked python:entry_recipient and 'checked' or None;
+                                                                disabled python:disabled or None"
+                                                />
+                                        </tal:block>
+                                    </tal:block>
+                                </td>
+                            </tr>
+                        </tal:entries>
+                    </tbody>
+                </table>
+            
+            </div>
+
+            <div class="field">
+                <label i18n:translate="">Users</label>
+                <div class="formHelp"
+                     i18n:translate="help_users">
+                    Select users to send mail.</div>
+
+                <div class="field">
+                    <input type="text" 
+                           id="mailservices-user-search"
+                           size="30" 
+                           name="search_user_term"
+                           title="Search for user" 
+                           i18n:attributes="title"
+                           class="searchField inputLabel"
+                           value="" 
+                           />
+                    <input type="submit"
+                           id="mailservices-save-user-button" 
+                           name="form.button.Search"
+                           value="Search"
+                           class="searchButton allowMultiSubmit" 
+                           i18n:attributes="value box_search"
+                           />
+                    <input type="submit"
+                           id="mailservices-searchall-user-button" 
+                           class="searchButton allowMultiSubmit kssattr-type-searchalluser"
+                           name="form.button.FindAllUsers"
+                           value="Show all"
+                           i18n:attributes="value label_showall;"
+                           tal:condition="not:site_properties/many_users"
+                           />
+                </div>
+                <table metal:define-macro="user-mailservices" id="user-mailservices"
+                       class="listing"
+                       summary="Current mailservices recipients users" 
+                       i18n:attributes="summary summary_mailservices_recipients_users;"
+                       tal:define="user_settings view/users_settings;
+                                   recipients view/recipients">
+                    
+                    <thead metal:define-macro="user-mailservices-head" id="user-mailservices-head">
+                        <tr tal:condition="python:len(recipients) > 0">
+                            <th i18n:translate="label_user">User</th>
+                            <th class="nosort"
+                                tal:repeat="recipient recipients"
+                                tal:content="recipient/title"  />
+                        </tr>
+                    </thead>
+                
+                    <tbody metal:define-macro="user-mailservices-settings" id="user-mailservices-settings">
+                        <tal:entries tal:condition="user_settings" repeat="entry user_settings">
+                            <tr tal:define="disabled entry/disabled | python:False;
+                                            oddrow repeat/entry/odd;"
+                                tal:attributes="class python:oddrow and 'odd' or 'even'">
+                                <td>
+                                    <img tal:replace="structure context/user.gif" /> 
+                                    <span tal:replace="entry/title" />
+                                    <input
+                                        tal:condition="not:disabled"
+                                        type="hidden"
+                                        name="users.id:records"
+                                        tal:attributes="value entry/id"
+                                        />
+                                    <input
+                                        tal:condition="not:disabled"
+                                        type="hidden"
+                                        name="users.title:records"
+                                        tal:attributes="value entry/title"
+                                        />
+                                </td>
+                                <td class="listingCheckbox"
+                                    tal:repeat="recipient recipients">
+                                    <tal:block define="entry_recipient python:entry['recipients'][recipient['id']]">
+                                        <tal:block condition="python:entry_recipient in (True, False)">
+                                            <input class="noborder"
+                                                type="checkbox"
+                                                value="True"
+                                                tal:attributes="name string:users.recipient_${recipient/id}:records;
+                                                                checked python:entry_recipient and 'checked' or None;
+                                                                disabled python:disabled or None"
+                                                />
+                                        </tal:block>
+                                    </tal:block>
+                                </td>
+                            </tr>
+                        </tal:entries>
+                    </tbody>
+                </table>
+                
+            </div>
+            
+        </fieldset>
+        
+        <fieldset id="fieldset-additionals"
+                  class="formPanel hidden"
+                  tal:define="recipients view/recipients">
+            <legend id="fieldsetlegend-additionals"
+                    i18n:translate="">Additionals mails</legend>
+            
+            <div class="field"
+                 tal:repeat="recipient recipients">
+                <label tal:attributes="for string:email_${recipient/id};"
+                       i18n:translate=""
+                       tal:content="string:${recipient/title}"></label>
+                <div class="formHelp"
+                     i18n:translate="help_additional_recipient_type">
+                    Add more direct recipients separated by ";".</div>
+                <textarea
+                    tal:attributes="name string:email_${recipient/id};
+                                    id string:email_${recipient/id}"></textarea>
+            </div>
+        
+        </fieldset>
+        
+        <fieldset id="fieldset-mail"
+                  class="formPanel hidden">
+            <legend id="fieldsetlegend-mail"
+                    i18n:translate="">Write the mail</legend>
+
+            <div class="field">
+                <label for="send_from_address" i18n:translate="label_send_from">From</label>
+    
+                    <div class="formHelp" i18n:translate="help_send_from">
+                      Your email address.
+                    </div>
+                    <input type="text"
+                           id="send_from_address"
+                           name="send_from_address"
+                           size="25"
+                           tal:attributes="value python: request.get('send_from_address', member.getProperty('email',''));"
+                           />
+            </div>
+
+
+            <div class="field">
+                <label for="subject" i18n:translate="label_subject">Subject</label>
+                      <div class="formHelp" i18n:translate="help_subject">
+                        The subject of your email.
+                      </div>
+                  <input type="text"
+                       id="subject"
+                             name="subject"
+                             size="80"
+                             tabindex=""
+                             tal:attributes="tabindex tabindex/next;" />
+            </div>
+            
+            <div class="field">
+                <label for="body" i18n:translate="label_message">Body</label>
+                <div class="formHelp" i18n:translate="help_message">
+                    The body of your email.
+                </div>
+                <textarea cols="80"
+                          rows="10"
+                          tabindex=""
+                          id="body"
+                          name="body"
+                          tal:content="request/SESSION/message | nothing"
+                          tal:attributes="tabindex tabindex/next;">
+                    Body
+                </textarea>
+            </div>
+
+        </fieldset>
+        
+        <div class="formControls">
+            <input type="submit"
+                   value="Send"
+                   name="form.button.send"
+                   class="context"
+                   i18n:attributes="value"/>
+        </div>
+    </form>
+    </div>
+</div>
+</body>
+</html>
