@@ -16,15 +16,14 @@
     <browser:page
         for="*"
         name="mailservices"
-        template="mailservices.pt"
-        class=".mailservices.MailServicesView"
+        class=".forms.MailServicesForm"
         permission="atreal.mailservices.UseMailServices"
         layer="..interfaces.IMailServicesLayer"
         />
 
     <browser:page
         for="*"
-        class=".mailservices.KSSMailServicesView"
+        class=".views.KSSMailServicesView"
         name="updateSearchGroup"
         attribute="updateSearchGroup"
         permission="atreal.mailservices.UseMailServices"
@@ -33,7 +32,7 @@
       
     <browser:page
         for="*"
-        class=".mailservices.KSSMailServicesView"
+        class=".views.KSSMailServicesView"
         name="updateSearchUser"
         attribute="updateSearchUser"
         permission="atreal.mailservices.UseMailServices"

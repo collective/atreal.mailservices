@@ -1,13 +1,16 @@
+"""
+"""
+from Acquisition import aq_inner
 from itertools import chain
 
-from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.interfaces import IPloneSiteRoot
-
-from zope.interface import implements
 from zope.component import getMultiAdapter, queryUtility
-from Acquisition import aq_inner
+from zope.interface import implements
+
+from Products.Five import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+
+from Products.CMFPlone.interfaces import IPloneSiteRoot
+from Products.CMFCore.utils import getToolByName
 
 from kss.core.interfaces import IKSSView
 from plone.app.kss.plonekssview import PloneKSSView as base
@@ -15,6 +18,7 @@ from kss.core import kssaction
 
 from atreal.mailservices import MailServicesMessageFactory as _
 from atreal.mailservices.browser.controlpanel import IMailServicesSchema
+
 
 def merge_search_results(results, key):
     """Merge member search results.
@@ -31,12 +35,15 @@ def merge_search_results(results, key):
             output[id]=buf
     return output.values()
 
+
 class MailServicesView(BrowserView):
     """ 
     """
 
     @property
     def _options (self):
+        """
+        """
         _siteroot = queryUtility (IPloneSiteRoot)
         return IMailServicesSchema (_siteroot)
     
@@ -236,4 +243,6 @@ class KSSMailServicesView(base):
         macro = self.template.macros[the_id]
         res = macro_wrapper(the_macro=macro, instance=self.context, view=mailservices)
         ksscore.replaceHTML(ksscore.getHtmlIdSelector(the_id), res)
+
+
 
