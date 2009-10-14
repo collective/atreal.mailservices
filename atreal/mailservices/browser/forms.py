@@ -128,12 +128,15 @@ class MailServicesForm(MailServicesView, FieldsetsInputForm):
         """
         self.acl_users = getToolByName(self.context, 'acl_users')
         
-        mails = dict()
+        mails = {
+            'to': set([]),
+            'cc': set([]),
+            'bcc': set([]),
+        }
+
         for recipient in self.recipients():
-            
             #
             id = recipient['id']
-            mails[id] = set()
             
             #
             if self.request.form.get('groups', None) is not None:
@@ -156,18 +159,60 @@ class MailServicesForm(MailServicesView, FieldsetsInputForm):
                                   for additional in additionals.replace(' ','').split(';')
                                   if len(additional)])
         
+        #
+        site_properties = getToolByName(self, 'portal_properties').site_properties
+        mails['admin'] = site_properties.email_from_address
+        if getattr(self._options, 'mailservices_admin_bcc', True) is True:
+            mails['bcc'] |= set([mails['admin'],])
+        
+        #
+        if getattr(self._options, 'mailservices_privacy_mode', True) is True:
+            mails['bcc'] |= mails['to']
+            mails['to'] = set([])
+        
+        #
+        mails['from'] = self.request.form['form.send_from_address']
+        mails['to'] |= set([mails['from'],])
+        
+        #
+        mails['to'] = list(mails['to'])
+        mails['cc'] = list(mails['cc'])
+        mails['bcc'] = list(mails['bcc'])
         return mails
     
     def sendMail(self):
+        """ Send an email to all emails from emailsList,
+            with the info passsed in info, via the host object.
+            Return a dict with the (email,exception) of problematics
+            emails, or empty if no errors occured.
         """
-        """
-        print self.getAllMails()
-    
+        host = getToolByName(self, 'MailHost')
+        mails = self.getAllMails()
+        
+        plone_utils = getToolByName(self.context, 'plone_utils')
+        encoding = plone_utils.getSiteEncoding() 
+        
+        result = {}
+        try:
+            host.secureSend(self.request.form['form.body'],
+                            mails['to'],
+                            mails['admin'],
+                            mbcc=mails['bcc'],
+                            subject=self.request.form['form.subject'],
+                            mcc=mails['cc'],
+                            subtype='plain',
+                            charset=encoding,
+                            debug=False,
+                            From=mails['from'])
+        except Exception,e:
+            result['email']=e.__class__.__name__+' : '+str(e)
+        return result
+
     @form.action(_(u"Send"), name=u"send")
     def action_send(self, action, data):
         """
         """
-        self.sendMail()
+        print self.sendMail()
         if isinstance(self.context, (ATImage, ATFile)):
             suffix="/view"
         else:

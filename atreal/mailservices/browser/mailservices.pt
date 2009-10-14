@@ -190,6 +190,18 @@
                                 tal:repeat="recipient recipients"
                                 tal:content="recipient/title"  />
                         </tr>
+                        <tr>
+                            <th></th>
+                            <th tal:repeat="recipient recipients">
+                                <input class="noborder"
+                                       type="checkbox"
+                                       name="selectButton"
+                                       title="Select all items"
+                                       tal:attributes="onClick string:toggleSelect(this, 'groups.recipient_${recipient/id}:records');"
+                                       alt="Select all items"
+                                       i18n:attributes="title label_select_all_items; alt label_select_all_items;"/>
+                            </th>
+                        </tr>
                     </thead>
                     
                     <tbody metal:define-macro="group-mailservices-settings" id="group-mailservices-settings">
@@ -279,6 +291,18 @@
                             <th class="nosort"
                                 tal:repeat="recipient recipients"
                                 tal:content="recipient/title"  />
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th tal:repeat="recipient recipients">
+                                <input class="noborder"
+                                       type="checkbox"
+                                       name="selectButton"
+                                       title="Select all items"
+                                       tal:attributes="onClick string:toggleSelect(this, 'users.recipient_${recipient/id}:records');"
+                                       alt="Select all items"
+                                       i18n:attributes="title label_select_all_items; alt label_select_all_items;"/>
+                            </th>
                         </tr>
                     </thead>
                 
