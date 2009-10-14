@@ -13,6 +13,8 @@ from plone.fieldsets.form import FieldsetsInputForm
 
 from Products.statusmessages.interfaces import IStatusMessage
 
+from Products.CMFCore.utils import getToolByName
+
 from Products.ATContentTypes.content.file import ATFile
 from Products.ATContentTypes.content.image import ATImage
 
@@ -23,6 +25,7 @@ from atreal.mailservices import MailServicesMessageFactory as _
 
 from Products.CMFDefault.formlib.schema import EmailLine
 
+
 class IMailServicesGroupsUsersSchema(Interface):
     """
     """
@@ -30,20 +33,6 @@ class IMailServicesGroupsUsersSchema(Interface):
 class IMailServicesAdditionalsSchema(Interface):
     """
     """
-    email_to = schema.Text(title=_(u"To"),
-                           description=_(u"help_additional_recipient_type",
-                                         default=u"Add more direct recipients separated by ';'"),
-                           required=False)
-
-    email_cc = schema.Text(title=_(u"Cc"),
-                           description=_(u"help_additional_recipient_type",
-                                         default=u"Add more direct recipients separated by ';'"),
-                           required=False)
-
-    email_bcc = schema.Text(title=_(u"Bcc"),
-                            description=_(u"help_additional_recipient_type",
-                                          default=u"Add more direct recipients separated by ';'"),
-                            required=False)
     
 class IMailServicesMailSchema(Interface):
     """
@@ -91,10 +80,6 @@ class MailServicesForm(MailServicesView, FieldsetsInputForm):
                                 ms_additionalsset,
                                 ms_mailset)
 
-    form_fields['email_to'].custom_widget = TextAreaWidgetCustom
-    form_fields['email_cc'].custom_widget = TextAreaWidgetCustom
-    form_fields['email_bcc'].custom_widget = TextAreaWidgetCustom
-
     form_name = _(u"Mail Services")
     label = _(u"Mail Services")
     description = _(u"description_mailservices",
@@ -106,16 +91,88 @@ class MailServicesForm(MailServicesView, FieldsetsInputForm):
         processInputs(self.request)
         setPageEncoding(self.request)
         super(FiveFormlibMixin, self).update()        
+
+    def getMailForUserById(self, user_id = ""):
+        """
+        """
+        user = self.acl_users.getUserById(user_id)
+        if user is None:
+            return None
+        return user.getProperty('email', None)
+
+    def getMailsForUsersByIds(self, user_ids = []):
+        """
+        """
+        return set([self.getMailForUserById(user)
+                    for user in user_ids
+                    if self.getMailForUserById(user) is not None])
+
+    def getMailsForGroupById(self, group_id = ""):
+        """
+        """
+        group = self.acl_users.getGroupById(group_id)
+        if group is None:
+            return set([])
+        return self.getMailsForUsersByIds(group.getAllGroupMemberIds())
+    
+    def getMailsForGroupsByIds(self, group_ids = []):
+        """
+        """
+        result = set()
+        for group_id in group_ids:
+            result |= self.getMailsForGroupById(group_id)
+        return result
+    
+    def getAllMails(self):
+        """
+        """
+        self.acl_users = getToolByName(self.context, 'acl_users')
+        
+        mails = dict()
+        for recipient in self.recipients():
+            
+            #
+            id = recipient['id']
+            mails[id] = set()
+            
+            #
+            if self.request.form.get('groups', None) is not None:
+                mails[id] |= self.getMailsForGroupsByIds(
+                    [group.id
+                     for group in self.request.form['groups']
+                     if getattr(group, 'recipient_'+id, False)=='True'])
+            
+            #
+            if self.request.form.get('users', None) is not None:
+                mails[id] |= self.getMailsForUsersByIds(
+                    [user.id
+                     for user in self.request.form['users']
+                     if getattr(user, 'recipient_'+id, False)=='True'])
+            
+            #
+            additionals = self.request.form.get('email_'+id, None)
+            if additionals is not None:
+                mails[id] |= set([additional
+                                  for additional in additionals.replace(' ','').split(';')
+                                  if len(additional)])
+        
+        return mails
+    
+    def sendMail(self):
+        """
+        """
+        print self.getAllMails()
     
     @form.action(_(u"Send"), name=u"send")
     def action_send(self, action, data):
         """
         """
+        self.sendMail()
         if isinstance(self.context, (ATImage, ATFile)):
             suffix="/view"
         else:
             suffix=""
         self.request.response.redirect(self.context.absolute_url()+suffix)
-        IStatusMessage(self.request).addStatusMessage(_(u"Mail sended."),
+        IStatusMessage(self.request).addStatusMessage(_(u"Mail sent."),
                                                       type='info')
         return ""

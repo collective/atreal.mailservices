@@ -13,21 +13,22 @@ from plone.app.controlpanel.form import ControlPanelForm
 
 class IMailServicesSchema(Interface):
 
-    mailservices_cc_field = Bool(
-        title=_(u'label_cc_field',
-                default=u"Cc field ?"),
-        description=_(u"help_cc_field",
+    mailservices_privacy_mode = Bool(
+        title=_(u'label_privacy_mode',
+                default=u"Privacy Mode ?"),
+        description=_(u"help_privacy_mode",
                       default=u"This option allows to the user to choose cc to send a mail."),
         default=True,
         required=True)
-    
-    mailservices_bcc_field = Bool(
-        title=_(u'label_bcc_field',
-                default=u"Bcc field ?"),
-        description=_(u"help_bcc_field",
-                      default=u"This option allows to the user to choose bcc to send a mail."),
-        default = True,
+
+    mailservices_admin_bcc = Bool(
+        title=_(u'label_admin_bcc',
+                default=u"Would you like Adminstrator of this Plone Site receive all mails ?"),
+        description=_(u"help_admin_bcc",
+                      default=u"This will mail each mail sended with MailServices to Portal Administrator."),
+        default=True,
         required=True)
+
 
 class MailServicesControlPanelAdapter(SchemaAdapterBase):
 
@@ -37,9 +38,10 @@ class MailServicesControlPanelAdapter(SchemaAdapterBase):
     def __init__(self, context):
         super(MailServicesControlPanelAdapter, self).__init__(context)
 
-    mailservices_cc_field = ProxyFieldProperty(IMailServicesSchema['mailservices_cc_field'])
-    mailservices_bcc_field = ProxyFieldProperty(IMailServicesSchema['mailservices_bcc_field'])
-    
+    mailservices_privacy_mode = ProxyFieldProperty(IMailServicesSchema['mailservices_privacy_mode'])
+    mailservices_admin_bcc = ProxyFieldProperty(IMailServicesSchema['mailservices_admin_bcc'])
+
+
 class MailServicesControlPanel(ControlPanelForm):
     form_fields = form.FormFields(IMailServicesSchema)
     label = _("MailServices settings")

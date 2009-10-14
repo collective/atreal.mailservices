@@ -43,26 +43,26 @@
 	       i18n:translate="go_to_contentrules_assignment_context">
 		Return
 	    </a>
-
+        
 	    <div tal:condition="not:email_from_address">
-	
+        
 		<p class="documentDescription"
 		   i18n:domain="plone"
 		   i18n:translate="text_no_email_setup">
 		    This site doesn't have a valid email setup, so you cannot use
 		    any contact forms. 
 		</p>
-	
+        
 	    </div>
-
+        
 	    <div tal:condition="email_from_address">
-    
+        
 		<p i18n:translate=""
 		   tal:condition="view/description"
 		   tal:content="view/description">
 		    Description
 		</p>
-    
+        
 		<form action="."
 		      metal:define-macro="master"
 		      tal:define="is_fieldsets view/is_fieldsets"
@@ -326,6 +326,25 @@
 
 			</tal:groupsusers>
 
+			<tal:additionals tal:condition="python:fieldset.id=='additionals'"
+                             tal:define="recipients view/recipients">
+                
+                <div class="field" 
+	 	                 tal:repeat="recipient recipients"> 
+	 	                <label tal:attributes="for string:email_${recipient/id};" 
+	 	                       i18n:translate="" 
+	 	                       tal:content="string:${recipient/title}"></label> 
+	 	                <div class="formHelp" 
+	 	                     i18n:translate="help_additional_recipient_type"> 
+	 	                    Add more direct recipients separated by ";".</div> 
+	 	                <textarea 
+	 	                    tal:attributes="name string:email_${recipient/id}; 
+	 	                                    id string:email_${recipient/id}"
+                            tal:content="python:request.form.get('email_'+recipient['id'])"></textarea> 
+	 	        </div> 
+			
+            </tal:additionals>
+            
 			<tal:block tal:repeat="widget fieldset/widgets">
     
 			    <div class="field"
@@ -344,6 +363,7 @@
 				      title="Required"
 				      i18n:attributes="title title_required;"
 				      i18n:translate="label_required"
+                      i18n:domain="plone"
 				      tal:condition="widget/required">
 				    (Required)
 				</span>

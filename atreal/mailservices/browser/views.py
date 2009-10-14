@@ -52,9 +52,8 @@ class MailServicesView(BrowserView):
         """
         recipients = []
         recipients.append(dict(id = 'to', title = _("To")))
-        if getattr(self._options, 'mailservices_cc_field', True):
+        if getattr(self._options, 'mailservices_privacy_mode', True) is not True:
             recipients.append(dict(id = 'cc', title = _("Cc")))
-        if getattr(self._options, 'mailservices_bcc_field', True):
             recipients.append(dict(id = 'bcc', title = _("Bcc")))
         return recipients
     
