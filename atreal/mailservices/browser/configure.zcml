@@ -6,11 +6,13 @@
     <browser:resource
         name="mailservices_icon.png"
         image="mailservices_icon.png"
+        layer="..interfaces.IMailServicesLayer"
         />
 
     <browser:resource
         name="atreal.mailservices.kss"
         file="mailservices.kss"
+        layer="..interfaces.IMailServicesLayer"
         />
 
     <browser:page
