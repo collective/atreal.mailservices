@@ -215,23 +215,24 @@ class MailServicesForm(MailServicesView, FieldsetsInputForm):
         result = self.sendMail()
         res = result.get('email', None)
         if res is not None:
-            self.status = "Mail not sent, errors : "+res
+            self.form_reset = False
+            self.status = _(u"Mail not sent.") + res
             return
-        else:
-            type = 'info'
-            message = _(u"Mail sent.")
-            
-            #
-            props = getToolByName(self.context, 'portal_properties')
-            stp = props.site_properties
-            view_action_types = stp.getProperty('typesUseViewActionInListings', ())
-            
-            #
-            suffix = ""
-            if self.context.portal_type in view_action_types:
-                suffix = '/view'
-            
-            #
-            self.request.response.redirect(self.context.absolute_url()+suffix)
-            IStatusMessage(self.request).addStatusMessage(message, type=type)
-            return ""
+
+        type = 'info'
+        message = _(u"Mail sent.")
+        
+        #
+        props = getToolByName(self.context, 'portal_properties')
+        stp = props.site_properties
+        view_action_types = stp.getProperty('typesUseViewActionInListings', ())
+        
+        #
+        suffix = ""
+        if self.context.portal_type in view_action_types:
+            suffix = '/view'
+        
+        #
+        self.request.response.redirect(self.context.absolute_url()+suffix)
+        IStatusMessage(self.request).addStatusMessage(message, type=type)
+        return ""

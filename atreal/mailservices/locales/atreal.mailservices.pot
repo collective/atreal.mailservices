@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-10-16 08:37+0000\n"
+"POT-Creation-Date: 2009-10-16 09:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,16 +38,15 @@ msgstr ""
 msgid "Groups & Users"
 msgstr ""
 
-#. Default: "Info"
-#: ./browser/mailservices.pt:23
-msgid "Info"
-msgstr ""
-
 #: ./browser/forms.py:83
 msgid "Mail Services"
 msgstr ""
 
-#: ./browser/forms.py:221
+#: ./browser/forms.py:219
+msgid "Mail not sent."
+msgstr ""
+
+#: ./browser/forms.py:223
 msgid "Mail sent."
 msgstr ""
 
