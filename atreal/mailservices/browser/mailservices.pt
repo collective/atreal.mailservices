@@ -19,9 +19,9 @@
 
                 <dl tal:define="status view/status"
                      tal:condition="status"
-                     class="portalMessage info">
-                    <dt i18n:translate="">
-                        Info
+                     class="portalMessage error">
+                    <dt i18n:translate="" i18n:domain="plone">
+                        Error
                     </dt>
                     <dd tal:content="view/status" />
                 </dl>

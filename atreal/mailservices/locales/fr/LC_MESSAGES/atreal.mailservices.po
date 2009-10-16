@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-10-16 08:37+0000\n"
-"PO-Revision-Date: 2009-10-16 08:37+0000\n"
+"POT-Creation-Date: 2009-10-16 09:39+0000\n"
+"PO-Revision-Date: 2009-10-16 09:39+0000\n"
 "Last-Translator: Florent MICHON <f10w>\n"
 "Language-Team: atReal Team <contact at atreal dot net>\n"
 "MIME-Version: 1.0\n"
@@ -35,16 +35,15 @@ msgstr "Groupes"
 msgid "Groups & Users"
 msgstr "Groupes et utilisateurs"
 
-#. Default: "Info"
-#: ./browser/mailservices.pt:23
-msgid "Info"
-msgstr ""
-
 #: ./browser/forms.py:83
 msgid "Mail Services"
 msgstr ""
 
-#: ./browser/forms.py:221
+#: ./browser/forms.py:219
+msgid "Mail not sent."
+msgstr "Le courriel n'a pas été envoyé. "
+
+#: ./browser/forms.py:223
 msgid "Mail sent."
 msgstr "Courriel envoyé."
 
