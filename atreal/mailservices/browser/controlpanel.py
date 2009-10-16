@@ -13,13 +13,14 @@ from plone.app.controlpanel.form import ControlPanelForm
 
 class IMailServicesSchema(Interface):
 
-    mailservices_privacy_mode = Bool(
-        title=_(u'label_privacy_mode',
-                default=u"Privacy Mode ?"),
-        description=_(u"help_privacy_mode",
-                      default=u"This option allows to the user to choose cc to send a mail."),
-        default=True,
-        required=True)
+    # XXX : Support BCC
+    #mailservices_privacy_mode = Bool(
+    #    title=_(u'label_privacy_mode',
+    #            default=u"Privacy Mode ?"),
+    #    description=_(u"help_privacy_mode",
+    #                  default=u"This option allows to the user to choose cc to send a mail."),
+    #    default=True,
+    #    required=True)
 
     mailservices_admin_bcc = Bool(
         title=_(u'label_admin_bcc',
@@ -38,7 +39,8 @@ class MailServicesControlPanelAdapter(SchemaAdapterBase):
     def __init__(self, context):
         super(MailServicesControlPanelAdapter, self).__init__(context)
 
-    mailservices_privacy_mode = ProxyFieldProperty(IMailServicesSchema['mailservices_privacy_mode'])
+    # XXX : Support BCC
+    #mailservices_privacy_mode = ProxyFieldProperty(IMailServicesSchema['mailservices_privacy_mode'])
     mailservices_admin_bcc = ProxyFieldProperty(IMailServicesSchema['mailservices_admin_bcc'])
 
 

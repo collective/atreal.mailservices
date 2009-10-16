@@ -162,13 +162,16 @@ class MailServicesForm(MailServicesView, FieldsetsInputForm):
         #
         site_properties = getToolByName(self, 'portal_properties').site_properties
         mails['admin'] = site_properties.email_from_address
+        # XXX : Support BCC
+        #if getattr(self._options, 'mailservices_admin_bcc', True) is True:
+        #    mails['bcc'] |= set([mails['admin'],])
         if getattr(self._options, 'mailservices_admin_bcc', True) is True:
-            mails['bcc'] |= set([mails['admin'],])
+            mails['cc'] |= set([mails['admin'],])
         
-        #
-        if getattr(self._options, 'mailservices_privacy_mode', True) is True:
-            mails['bcc'] |= mails['to']
-            mails['to'] = set([])
+        # XXX : Support BCC
+        #if getattr(self._options, 'mailservices_privacy_mode', True) is True:
+        #    mails['bcc'] |= mails['to']
+        #    mails['to'] = set([])
         
         #
         mails['from'] = self.request.form['form.send_from_address']

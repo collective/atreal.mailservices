@@ -52,9 +52,11 @@ class MailServicesView(BrowserView):
         """
         recipients = []
         recipients.append(dict(id = 'to', title = _("To")))
-        if getattr(self._options, 'mailservices_privacy_mode', True) is not True:
-            recipients.append(dict(id = 'cc', title = _("Cc")))
-            recipients.append(dict(id = 'bcc', title = _("Bcc")))
+        recipients.append(dict(id = 'cc', title = _("Cc")))
+        # XXX : Support BCC
+        #if getattr(self._options, 'mailservices_privacy_mode', True) is not True:
+        #    recipients.append(dict(id = 'cc', title = _("Cc")))
+        #    recipients.append(dict(id = 'bcc', title = _("Bcc")))
         return recipients
     
     def existing_results(self, type):
