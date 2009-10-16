@@ -93,8 +93,7 @@ class MailServicesView(BrowserView):
             group_results = new_group_results
         
         current_settings = existing_results + group_results
-        
-        current_settings.sort(key=lambda x: str(x["title"]))
+        current_settings.sort(key=lambda x: str(x["title"].lower()))
         return current_settings
 
     def users_settings(self):
@@ -110,8 +109,7 @@ class MailServicesView(BrowserView):
             user_results = new_user_results
         
         current_settings = existing_results + user_results
-
-        current_settings.sort(key=lambda x: str(x["title"]))
+        current_settings.sort(key=lambda x: str(x["title"].lower()))
         return current_settings
     
     def _principal_search_results(self,

@@ -1,13 +1,10 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# SOME DESCRIPTIVE TITLE.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-03-31 09:33+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2009-10-16 08:37+0000\n"
+"PO-Revision-Date: 2009-10-16 08:37+0000\n"
+"Last-Translator: Florent MICHON <f10w>\n"
+"Language-Team: atReal Team <contact at atreal dot net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,54 +14,64 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: atreal.mailservices\n"
 
-#. Default: "Additionals mails"
-#: ./browser/mailservices.pt:243
+#: ./browser/forms.py:68
 msgid "Additionals mails"
 msgstr "Adresses supplémentaires"
 
-#: ./browser/mailservices.py:42
+#: ./browser/views.py:57
 msgid "Bcc"
 msgstr "Copie Cachée à"
 
-#: ./browser/mailservices.py:41
+#: ./browser/views.py:56
 msgid "Cc"
 msgstr "Copie à"
 
 #. Default: "Groups"
-#: ./browser/mailservices.pt:58
+#: ./browser/mailservices.pt:147
 msgid "Groups"
 msgstr "Groupes"
 
-#. Default: "Groups & Users"
-#: ./browser/mailservices.pt:54
+#: ./browser/forms.py:64
 msgid "Groups & Users"
 msgstr "Groupes et utilisateurs"
+
+#. Default: "Info"
+#: ./browser/mailservices.pt:23
+msgid "Info"
+msgstr ""
+
+#: ./browser/forms.py:83
+msgid "Mail Services"
+msgstr ""
+
+#: ./browser/forms.py:221
+msgid "Mail sent."
+msgstr "Courriel envoyé."
 
 #. Default: "MailServices"
 #: ./profiles/default/controlpanel.xml
 msgid "MailServices"
 msgstr ""
 
-#: ./browser/controlpanel.py:54
+#: ./browser/controlpanel.py:47
 msgid "MailServices settings"
 msgstr "Paramètres de MailServices"
 
-#: ./browser/controlpanel.py:55
+#: ./browser/controlpanel.py:48
 msgid "MailServices settings for this site."
 msgstr "Paramètres de MailServices pour ce site"
 
 #. Default: "Search for group"
-#: ./browser/mailservices.pt:64
+#: ./browser/mailservices.pt:153
 msgid "Search for group"
 msgstr "Rechercher des groupes"
 
 #. Default: "Search for user"
-#: ./browser/mailservices.pt:155
+#: ./browser/mailservices.pt:256
 msgid "Search for user"
 msgstr "Rechercher des utilisateurs"
 
-#. Default: "Send"
-#: ./browser/mailservices.pt:313
+#: ./browser/forms.py:211
 msgid "Send"
 msgstr "Envoyer"
 
@@ -73,132 +80,131 @@ msgstr "Envoyer"
 msgid "Send this page to specific users"
 msgstr "Envoyer cette page à des utilisateurs spécifiques"
 
-#: ./browser/mailservices.py:40
+#: ./browser/views.py:54
 msgid "To"
 msgstr "Pour"
 
 #. Default: "Users"
-#: ./browser/mailservices.pt:149
+#: ./browser/mailservices.pt:250
 msgid "Users"
 msgstr "Utilisateurs"
 
-#. Default: "Write the mail"
-#: ./browser/mailservices.pt:263
+#: ./browser/forms.py:72
 msgid "Write the mail"
 msgstr "Ecrire le mail"
 
 #. Default: "Search"
-#: ./browser/mailservices.pt:73
+#: ./browser/mailservices.pt:162
 msgid "box_search"
 msgstr "Rechercher"
 
 #. Default: "Fill the three tabs and valid the form to send an email."
-#: ./browser/mailservices.pt:41
+#: ./browser/forms.py:85
 msgid "description_mailservices"
 msgstr "Saisir les informations des trois onglets et valider le formulaire pour envoyer le mail."
 
-#. Default: "Mail services for \"${object}\""
-#: ./browser/mailservices.pt:17
-msgid "heading_mailservices_control"
-msgstr "Mail services pour \"${object}\""
-
 #. Default: "Add more direct recipients separated by \";\"."
-#: ./browser/mailservices.pt:251
+#: ./browser/mailservices.pt:361
 msgid "help_additional_recipient_type"
 msgstr "Ajouter plus d'adresses de destinataires en les séparant par des \";\"."
 
-#. Default: "This option allows to the user to choose bcc to send a mail."
-#: ./browser/controlpanel.py:35
-msgid "help_bcc_field"
-msgstr ""
-
-#. Default: "This option allows to the user to choose cc to send a mail."
+#. Default: "This will mail each mail sended with MailServices to Portal Administrator."
 #: ./browser/controlpanel.py:27
-msgid "help_cc_field"
-msgstr ""
+msgid "help_admin_bcc"
+msgstr "Cette option permet d'envoyer chaque mail à l'administrateur du site. Adresse dans la configuration du serveur de mail."
 
 #. Default: "Select groups to send mail."
-#: ./browser/mailservices.pt:59
+#: ./browser/mailservices.pt:148
 msgid "help_groups"
 msgstr "Sélectionner des groupes pour envoyer le mail à tous les membres du groupe."
 
 #. Default: "The body of your email."
-#: ./browser/mailservices.pt:296
+#: ./browser/forms.py:52
 msgid "help_message"
 msgstr "Le corps du mail."
 
-#. Default: "This option allows you to send a distinct mail for each user and disabled the two more options."
+#. Default: "This option allows to the user to choose cc to send a mail."
 #: ./browser/controlpanel.py:19
-msgid "help_one_user_one_mail"
-msgstr "Cette option vous permet de choisir entre l'envoi d'un mail distinct à chaque utilisateur (permet de ne pas diffuser une liste d'adresses mail mais surcharge le serveur lors de l'envoi du mail) ou d'envoyer un mail classique avec des destinatires dans les champs classiques."
+msgid "help_privacy_mode"
+msgstr "Cette option permet de ne pas donner le choix aux utilisateurs et d'envoyer le mail avec tous les utilisateur en Copie Cachée."
 
 #. Default: "Your email address."
-#: ./browser/mailservices.pt:269
+#: ./browser/forms.py:42
 msgid "help_send_from"
 msgstr "Votre adresse mail."
 
 #. Default: "The subject of your email."
-#: ./browser/mailservices.pt:283
+#: ./browser/forms.py:47
 msgid "help_subject"
 msgstr "L'objet de votre mail."
 
 #. Default: "Select users to send mail."
-#: ./browser/mailservices.pt:150
+#: ./browser/mailservices.pt:251
 msgid "help_users"
 msgstr "Sélectionner des utilisateurs pour qu'ils reçoivent le mail."
 
-#. Default: "Bcc field ?"
-#: ./browser/controlpanel.py:33
-msgid "label_bcc_field"
-msgstr "Champ \"Copie cachée à\" ?"
-
-#. Default: "Cc field ?"
+#. Default: "Would you like Adminstrator of this Plone Site receive all mails ?"
 #: ./browser/controlpanel.py:25
-msgid "label_cc_field"
-msgstr "Champ \"Copie à\" ?"
+msgid "label_admin_bcc"
+msgstr "Copie de tous les mails à l'administrateur du site ?"
 
 #. Default: "Group"
-#: ./browser/mailservices.pt:99
+#: ./browser/mailservices.pt:188
 msgid "label_group"
 msgstr "Nom du groupe"
 
 #. Default: "Body"
-#: ./browser/mailservices.pt:295
+#: ./browser/forms.py:50
 msgid "label_message"
 msgstr "Corps du message"
 
-#. Default: "One user one mail ?"
+#. Default: "Privacy Mode ?"
 #: ./browser/controlpanel.py:17
-msgid "label_one_user_one_mail"
-msgstr "Un utilisateur un mail ?"
+msgid "label_privacy_mode"
+msgstr "Mode \"privacy\" actif ?"
+
+#. Default: "(Required)"
+#: ./browser/mailservices.pt:101
+msgid "label_required"
+msgstr "(Requis)"
+
+#. Default: "Select all items"
+#: ./browser/mailservices.pt:196
+msgid "label_select_all_items"
+msgstr "Sélectionner tous les éléments."
 
 #. Default: "From"
-#: ./browser/mailservices.pt:267
+#: ./browser/forms.py:40
 msgid "label_send_from"
 msgstr "De"
 
 #. Default: "Show all"
-#: ./browser/mailservices.pt:80
+#: ./browser/mailservices.pt:169
 msgid "label_showall"
 msgstr "Tous"
 
 #. Default: "Subject"
-#: ./browser/mailservices.pt:282
+#: ./browser/forms.py:45
 msgid "label_subject"
 msgstr "Objet"
 
 #. Default: "User"
-#: ./browser/mailservices.pt:189
+#: ./browser/mailservices.pt:290
 msgid "label_user"
 msgstr "Nom d'utilisateur"
 
 #. Default: "Current mailservices recipients groups"
-#: ./browser/mailservices.pt:90
+#: ./browser/mailservices.pt:179
 msgid "summary_mailservices_recipients_groups"
 msgstr "Groupes sélectionnés en destinataire"
 
 #. Default: "Current mailservices recipients users"
-#: ./browser/mailservices.pt:180
+#: ./browser/mailservices.pt:281
 msgid "summary_mailservices_recipients_users"
 msgstr "Utilisateurs sélectionnés en destinataire"
+
+#. Default: "Required"
+#: ./browser/mailservices.pt:101
+msgid "title_required"
+msgstr "Requis"
 

@@ -212,12 +212,26 @@ class MailServicesForm(MailServicesView, FieldsetsInputForm):
     def action_send(self, action, data):
         """
         """
-        print self.sendMail()
-        if isinstance(self.context, (ATImage, ATFile)):
-            suffix="/view"
+        result = self.sendMail()
+        res = result.get('email', None)
+        if res is not None:
+            self.status = "Mail not sent, errors : "+res
+            return
         else:
-            suffix=""
-        self.request.response.redirect(self.context.absolute_url()+suffix)
-        IStatusMessage(self.request).addStatusMessage(_(u"Mail sent."),
-                                                      type='info')
-        return ""
+            type = 'info'
+            message = _(u"Mail sent.")
+            
+            #
+            props = getToolByName(self.context, 'portal_properties')
+            stp = props.site_properties
+            view_action_types = stp.getProperty('typesUseViewActionInListings', ())
+            
+            #
+            suffix = ""
+            if self.context.portal_type in view_action_types:
+                suffix = '/view'
+            
+            #
+            self.request.response.redirect(self.context.absolute_url()+suffix)
+            IStatusMessage(self.request).addStatusMessage(message, type=type)
+            return ""

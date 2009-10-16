@@ -20,7 +20,7 @@
         name="default"
         title="MailServices"
         directory="profiles/default"
-        description=""
+        description="MailServices allowing to send a mail to portal's users and groups."
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
     
