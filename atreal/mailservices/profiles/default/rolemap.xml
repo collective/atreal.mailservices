@@ -4,9 +4,6 @@
     <permission name="MailServices: Use mailing services"
                 acquire="True">
       <role name="Manager"/>
-    </permission>
-    <permission name="MailServices: Use mailing services"
-                acquire="True">
       <role name="Member"/>
     </permission>
   </permissions>

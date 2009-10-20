@@ -1,8 +1,20 @@
-Changelog
-=========
+=================================
+Changelog for atreal.mailservices
+=================================
+(name of developer listed in brackets)
 
-1.0.0 - Unreleased
-----------------
+Version 1.0.0beta1 - 2009-10-16
+----------------------------
 
-* Initial release
+- Transform the products MailServices in an egg.
+[Florent Michon]
 
+- Initial package structure.
+[zopeskel]
+
+
+Version 0.6.4 - 2009-09-18
+----------------------------
+
+- Last version as a Product.
+[Matthias Broquet]

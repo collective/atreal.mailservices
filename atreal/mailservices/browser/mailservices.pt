@@ -9,7 +9,8 @@
 <body>
 <div metal:fill-slot="body"
      tal:define="context_state context/@@plone_context_state;
-                 email_from_address portal/email_from_address">
+                 email_from_address portal/email_from_address;
+                 usermail_from_address view/usermail_from_address">
 
     <div metal:define-macro="form">
 
@@ -44,7 +45,7 @@
 		Return
 	    </a>
         
-	    <div tal:condition="not:email_from_address">
+        <div tal:condition="not:email_from_address">
         
 		<p class="documentDescription"
 		   i18n:domain="plone"
@@ -55,7 +56,17 @@
         
 	    </div>
         
-	    <div tal:condition="email_from_address">
+	    <div tal:condition="not:usermail_from_address">
+        
+		<p class="documentDescription"
+		   i18n:translate="text_no_usermail_setup">
+		    You don't have a valid email address, so you cannot use
+		    any contact forms. 
+		</p>
+        
+	    </div>
+        
+	    <div tal:condition="python:email_from_address and usermail_from_address">
         
 		<p i18n:translate=""
 		   tal:condition="view/description"
@@ -185,14 +196,15 @@
                     
                     <thead metal:define-macro="group-mailservices-head" id="group-mailservices-head">
                         <tr tal:condition="python:len(recipients) > 0">
-                            <th i18n:translate="label_group">Group</th>
+                            <th class="nosort"
+                                i18n:translate="label_group">Group</th>
                             <th class="nosort"
                                 tal:repeat="recipient recipients"
                                 tal:content="recipient/title"  />
                         </tr>
                         <tr>
-                            <th></th>
-                            <th tal:repeat="recipient recipients">
+                            <th class="nosort"></th>
+                            <th class="nosort" tal:repeat="recipient recipients">
                                 <input class="noborder"
                                        type="checkbox"
                                        name="selectButton"
@@ -287,14 +299,15 @@
                     
                     <thead metal:define-macro="user-mailservices-head" id="user-mailservices-head">
                         <tr tal:condition="python:len(recipients) > 0">
-                            <th i18n:translate="label_user">User</th>
+                            <th class="nosort"
+                                i18n:translate="label_user">User</th>
                             <th class="nosort"
                                 tal:repeat="recipient recipients"
                                 tal:content="recipient/title"  />
                         </tr>
                         <tr>
-                            <th></th>
-                            <th tal:repeat="recipient recipients">
+                            <th class="nosort"></th>
+                            <th class="nosort" tal:repeat="recipient recipients">
                                 <input class="noborder"
                                        type="checkbox"
                                        name="selectButton"
@@ -350,7 +363,8 @@
 
 			</tal:groupsusers>
 
-			<tal:additionals tal:condition="python:fieldset.id=='additionals'"
+			<tal:additionals tal:condition="python:fieldset.id=='additionals' and
+                                            view.mailservices_additionals()"
                              tal:define="recipients view/recipients">
                 
                 <div class="field" 

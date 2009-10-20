@@ -3,10 +3,14 @@
 from zope.interface import Interface
 from zope import schema
 from zope.formlib import form
+from zope.component import getMultiAdapter, queryUtility
 
 from Products.Five.browser.pagetemplatefile import ZopeTwoPageTemplateFile
 from Products.Five.browser.decode import setPageEncoding
 from Products.Five.formlib.formbase import FiveFormlibMixin
+from Products.Five import BrowserView
+
+from Products.CMFPlone.utils import safe_unicode
 
 from plone.fieldsets.fieldsets import FormFieldsets
 from plone.fieldsets.form import FieldsetsInputForm
@@ -14,6 +18,7 @@ from plone.fieldsets.form import FieldsetsInputForm
 from Products.statusmessages.interfaces import IStatusMessage
 
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 
 from Products.ATContentTypes.content.file import ATFile
 from Products.ATContentTypes.content.image import ATImage
@@ -22,6 +27,7 @@ from atreal.mailservices.browser.widgets import TextAreaWidgetCustom
 from atreal.mailservices.browser.overrides import processInputs
 from atreal.mailservices.browser.views import MailServicesView
 from atreal.mailservices import MailServicesMessageFactory as _
+from atreal.mailservices.browser.controlpanel import IMailServicesSchema
 
 from Products.CMFDefault.formlib.schema import EmailLine
 
@@ -37,11 +43,6 @@ class IMailServicesAdditionalsSchema(Interface):
 class IMailServicesMailSchema(Interface):
     """
     """
-    send_from_address = EmailLine(title=_(u"label_send_from",
-                                          default=u"From"),
-                                  description=_(u"help_send_from",
-                                                default=u"Your email address."),
-                                  required=True)
     subject = schema.TextLine(title=_(u"label_subject",
                                       default=u"Subject"),
                                description=_(u"help_subject",
@@ -75,17 +76,63 @@ ms_mailset.label = _(u"Write the mail")
 class MailServicesForm(MailServicesView, FieldsetsInputForm):
     """
     """
-    
-    form_fields = FormFieldsets(ms_groupsusersset,
-                                ms_additionalsset,
-                                ms_mailset)
-
     form_name = _(u"Mail Services")
     label = _(u"Mail Services")
     description = _(u"description_mailservices",
-                    default=u"Fill the three tabs and valid the form to send an email.")
+                    default=u"Fill the tabs and valid the form to send an email.")
 
     template = ZopeTwoPageTemplateFile('mailservices.pt')
+    
+    @property
+    def form_fields(self):
+        """
+        """
+        form_fields = None
+        if self.mailservices_additionals():
+            form_fields = FormFieldsets(ms_groupsusersset,
+                                 ms_additionalsset,
+                                 ms_mailset)
+        else:
+            form_fields = FormFieldsets(ms_groupsusersset,
+                                 ms_mailset)
+        form_fields['body'].field.default = self.getTextReplaced('body')
+        form_fields['subject'].field.default = self.getTextReplaced('subject')
+        return form_fields
+    
+    def getTextReplaced(self, field = None):
+        """
+        """
+        template = getattr(self._options, 'mailservices_'+field, u"")
+        if template == "":
+            return template
+        for field in self.getFieldsReplaceables():
+            template = template.replace("${"+field+"}", getattr(self, field, None))
+        return template
+    
+    def getFieldsReplaceables(self):
+        """
+        """
+        return ['portal_title', 'object_title', 'object_url',]
+    
+    @property
+    def portal_title(self):
+        """
+        """
+        portal_state = getMultiAdapter((self.context, self.request),
+                                            name=u'plone_portal_state')
+        return safe_unicode(portal_state.portal_title())
+    
+    @property    
+    def object_title(self):
+        """
+        """
+        return safe_unicode(self.context.title_or_id())
+    
+    @property    
+    def object_url(self):
+        """
+        """
+        return self.context.absolute_url()
     
     def update(self):
         processInputs(self.request)
@@ -174,7 +221,7 @@ class MailServicesForm(MailServicesView, FieldsetsInputForm):
         #    mails['to'] = set([])
         
         #
-        mails['from'] = self.request.form['form.send_from_address']
+        mails['from'] = self.usermail_from_address()
         mails['to'] |= set([mails['from'],])
         
         #

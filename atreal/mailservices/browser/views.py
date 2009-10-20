@@ -59,6 +59,21 @@ class MailServicesView(BrowserView):
         #    recipients.append(dict(id = 'bcc', title = _("Bcc")))
         return recipients
     
+    
+    def mailservices_additionals(self):
+        """
+        """
+        return getattr(self._options, 'mailservices_additionals', False)
+    
+    def usermail_from_address(self):
+        """
+        """
+        pms = getToolByName(self.context, 'portal_membership')
+        usermail = pms.getAuthenticatedMember().email
+        if usermail == '':
+            return None
+        return usermail
+    
     def existing_results(self, type):
         info = []
         
@@ -93,6 +108,13 @@ class MailServicesView(BrowserView):
                 if group['id'] not in [abc['id'] for abc in existing_results]:
                     new_group_results.append(group)
             group_results = new_group_results
+        
+        # XXX => really dirty
+        new_group_results = []
+        for group in group_results:
+            if group['id'] != 'AuthenticatedUsers':
+                new_group_results.append(group)
+        group_results = new_group_results
         
         current_settings = existing_results + group_results
         current_settings.sort(key=lambda x: str(x["title"].lower()))
