@@ -70,7 +70,9 @@ class MailServicesView(BrowserView):
         """
         pms = getToolByName(self.context, 'portal_membership')
         usermail = pms.getAuthenticatedMember().email
-        if usermail == '':
+        if not usermail:
+            usermail = pms.getAuthenticatedMember().getProperty('email')
+        if not usermail:
             return None
         return usermail
     

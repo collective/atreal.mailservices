@@ -5,33 +5,32 @@ atreal.mailservices Package Readme
 Overview
 --------
 
-MailServices allowing to send a mail to portal's users and groups.
+MailServices allows to send emails to portal's users and groups.
+
 
 Description
 -----------
 
-* This very lightweight plone products let's you mailing people from your
- portal, by groups or by choosing wished users.
+* This very lightweight plone product let's you mailing people from your
+ portal, by groups or by selecting users.
 
-* It allows you to mail freely people that are'nt members of the portals too,
- but WITHOUT ANY VERIFICATION! (for the moment)
+* It equally allows you to mail people that are'nt members of the portals,
+ but WITHOUT ANY VERIFICATION! (for the moment).
 
-* Otherwise, it adds a document action and a user action, which works in the
+* Otherwise, it adds a document action, which works in the
  same way that classic plone 'send_to' action, but let's you choosing your
  target by scanning the portal groups/users.
 
-* It adds too a user action, which works in the same way that classic
- plone 'send_to' action, but let's you choosing your target by scanning the
- portal groups/users.
+* It also adds an user action, which works in the same way as described above.
 
 * Manager can choose in ControlPanel :
   - default subject,
   - default body,
-  - if he will receive a copy of each mail sent with mailservices,
-  - if users can sent mail not only to users and groups but to additionals
-  recipients.
+  - if he will receive a copy of each mail sent,
+  - if users are able to send mails to non-portal's users.
 
-* Mail is sent from user email adress.
+* Mails are sent from user email address. For security purposes, this can't be
+  modified.
  
  
 Important
@@ -43,9 +42,9 @@ Permission is set for 'Manager and 'Member'
 Note
 ----
 
-Bcc support is coded but when you send an email, all recipients can see the list
-of blind copy carbon recipients. That's why we have unactivated the bcc support
-while we investigate on that issue.
+Bcc support is currently implemented in a branche. However, due to MailHost behaviour,
+all recipients can see the bcc list.
+We are working on this issue, feel free to send your proposals in case you have some.
 
 
 Authors
@@ -60,4 +59,12 @@ Credits
 -------
 
 * Sponsorised by ML-COM - www.ml-com.com (and some international research labs)
+
+
+TODO
+----
+
+* Make BCC mailing work.
+* Modify template mechanism to adopt the same granularity that's provided in 
+  collective.contentrule.mail.
 
