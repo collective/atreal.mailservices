@@ -82,6 +82,11 @@ msgstr ""
 msgid "Send this page to specific users"
 msgstr ""
 
+#. Default: "Mail services"
+#: ./profiles/default/actions.xml
+msgid "Mail services"
+msgstr ""
+
 #: ./browser/views.py:54
 msgid "To"
 msgstr ""
