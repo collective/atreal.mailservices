@@ -11,11 +11,6 @@ from Products.CMFPlone.interfaces import IPloneSiteRoot
 from atreal.mailservices import MailServicesMessageFactory as _
 from plone.app.controlpanel.form import ControlPanelForm
 
-DEFAULT_MAILTEMPLATE_SUBJECT = \
-u"""[${portal_title}] New Publication"""
-
-DEFAULT_MAILTEMPLATE_BODY = \
-u"""Publication of new document on ${portal_title} : ${object_title} at ${object_url}"""
 
 class IMailServicesSchema(Interface):
 
@@ -49,8 +44,7 @@ class IMailServicesSchema(Interface):
                 default=u"Default Subject"),
         description=_(u"help_mailservices_subject",
                       default=u"Default subject. You can use ${portal_title}, ${object_title}, ${object_url} to replace with values."),
-        default = DEFAULT_MAILTEMPLATE_SUBJECT,
-        required=True
+        required=False
     )
     
     mailservices_body = SourceText(
@@ -58,8 +52,7 @@ class IMailServicesSchema(Interface):
                 default=u"Message template"),
         description=_(u"help_mailservices_body",
                       default=u"Default body message. You can use ${portal_title}, ${object_title}, ${object_url} to replace with values."),
-        default = DEFAULT_MAILTEMPLATE_BODY,
-        required=True
+        required=False
     )
 
 class MailServicesControlPanelAdapter(SchemaAdapterBase):

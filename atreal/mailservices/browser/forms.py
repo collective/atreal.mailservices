@@ -102,9 +102,9 @@ class MailServicesForm(MailServicesView, FieldsetsInputForm):
     def getTextReplaced(self, field = None):
         """
         """
-        template = getattr(self._options, 'mailservices_'+field, u"")
-        if template == "":
-            return template
+        template = getattr(self._options, 'mailservices_'+field)
+        if template is None:
+            return u""
         for field in self.getFieldsReplaceables():
             template = template.replace("${"+field+"}", getattr(self, field, None))
         return template
