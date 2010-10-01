@@ -1,20 +1,52 @@
-=================================
-Changelog for atreal.mailservices
-=================================
+Changelog
+=========
+
 (name of developer listed in brackets)
 
-Version 1.0.0beta1 - 2009-10-16
-----------------------------
+
+1.0.1 (unreleased)
+------------------
+
+- Fix Plone4-compatibility. [WouterVH]
+
+- Add docs/LICENSE.GPL and docs/LICENSE.txt. [WouterVH]
+
+- Add MANIFEST.in. [WouterVH]
+
+- Added z3c.autoinclude entry point so this package is automatically loaded in
+  Plone 3.3+. [WouterVH]
+
+- Pyflakes cleanup. [WouterVH]
+
+
+1.0.0 (2010-02-04)
+------------------
+
+- Default subject/body fields are not required anymore. [tiazma]
+
+- Modified the way to get the user's email. [tiazma]
+
+- Corrected README and added TODO section. [tiazma]
+
+- new features: user mail address auto, body and subject template, additionals adresses optionnals, translations... [f10w]
+
+- User action added. [tiazma]
+
+- By default, permission is now set on Member too. [tiazma]
+
+
+1.0.0beta1 (2009-10-16)
+-----------------------
 
 - Transform the products MailServices in an egg.
-[Florent Michon]
+  [Florent Michon]
 
 - Initial package structure.
-[zopeskel]
+  [zopeskel]
 
 
-Version 0.6.4 - 2009-09-18
-----------------------------
+0.6.4 (2009-09-18)
+------------------
 
 - Last version as a Product.
-[Matthias Broquet]
+  [Matthias Broquet]

@@ -1,13 +1,25 @@
 from setuptools import setup, find_packages
 import os
 
+def read(*rnames):
+    return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
+
 version = '1.0.0'
+
+long_description = (
+    read('README.txt')
+    + '\n' +
+    read('docs', 'HISTORY.txt')
+#    + '\n' +
+#    read('atreal', 'mailservices', 'README.txt')
+#    + '\n' +
+#    read('CONTRIBUTORS.txt')
+    )
 
 setup(name='atreal.mailservices',
       version=version,
-      description="",
-      long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+      description="Send mails from Plone to users and groups",
+      long_description=long_description,
       classifiers=[
         "Framework :: Plone",
         "Programming Language :: Python",
@@ -28,5 +40,7 @@ setup(name='atreal.mailservices',
       ],
       entry_points="""
       # -*- Entry points: -*-
+      [z3c.autoinclude.plugin]
+      target = plone
       """,
       )
