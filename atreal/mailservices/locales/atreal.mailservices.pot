@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-10-20 09:31+0000\n"
+"POT-Creation-Date: 2010-10-01 22:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: atreal.mailservices\n"
 
-#: ./browser/forms.py:69
+#: ./browser/forms.py:71
 msgid "Additionals mails"
 msgstr ""
 
@@ -25,60 +25,54 @@ msgstr ""
 msgid "Cc"
 msgstr ""
 
-#. Default: "Groups"
-#: ./browser/mailservices.pt:158
+#: ./browser/mailservices.pt:159
 msgid "Groups"
 msgstr ""
 
-#: ./browser/forms.py:65
+#: ./browser/forms.py:67
 msgid "Groups & Users"
 msgstr ""
 
-#: ./browser/forms.py:79
+#: ./browser/forms.py:81
 msgid "Mail Services"
 msgstr ""
 
-#: ./browser/forms.py:269
+#: ./browser/forms.py:271
 msgid "Mail not sent."
 msgstr ""
 
-#: ./browser/forms.py:273
+#: ./browser/forms.py:275
 msgid "Mail sent."
 msgstr ""
 
-#. Default: "Mail services"
 #: ./profiles/default/actions.xml
 msgid "Mail services"
 msgstr ""
 
-#. Default: "MailServices"
 #: ./profiles/default/controlpanel.xml
 msgid "MailServices"
 msgstr ""
 
-#: ./browser/controlpanel.py:82
+#: ./browser/controlpanel.py:75
 msgid "MailServices settings"
 msgstr ""
 
-#: ./browser/controlpanel.py:83
+#: ./browser/controlpanel.py:76
 msgid "MailServices settings for this site."
 msgstr ""
 
-#. Default: "Search for group"
-#: ./browser/mailservices.pt:164
+#: ./browser/mailservices.pt:165
 msgid "Search for group"
 msgstr ""
 
-#. Default: "Search for user"
-#: ./browser/mailservices.pt:268
+#: ./browser/mailservices.pt:269
 msgid "Search for user"
 msgstr ""
 
-#: ./browser/forms.py:261
+#: ./browser/forms.py:263
 msgid "Send"
 msgstr ""
 
-#. Default: "Send this page to specific users"
 #: ./profiles/default/actions.xml
 msgid "Send this page to specific users"
 msgstr ""
@@ -87,142 +81,141 @@ msgstr ""
 msgid "To"
 msgstr ""
 
-#. Default: "Users"
-#: ./browser/mailservices.pt:262
+#: ./browser/mailservices.pt:263
 msgid "Users"
 msgstr ""
 
-#: ./browser/forms.py:73
+#: ./browser/forms.py:75
 msgid "Write the mail"
 msgstr ""
 
 #. Default: "Search"
-#: ./browser/mailservices.pt:173
+#: ./browser/mailservices.pt:174
 msgid "box_search"
 msgstr ""
 
 #. Default: "Fill the tabs and valid the form to send an email."
-#: ./browser/forms.py:81
+#: ./browser/forms.py:83
 msgid "description_mailservices"
 msgstr ""
 
 #. Default: "Add more direct recipients separated by \";\"."
-#: ./browser/mailservices.pt:375
+#: ./browser/mailservices.pt:376
 msgid "help_additional_recipient_type"
 msgstr ""
 
 #. Default: "This will mail each mail sended with MailServices to Portal Administrator."
-#: ./browser/controlpanel.py:34
+#: ./browser/controlpanel.py:29
 msgid "help_admin_bcc"
 msgstr ""
 
 #. Default: "Select groups to send mail."
-#: ./browser/mailservices.pt:159
+#: ./browser/mailservices.pt:160
 msgid "help_groups"
 msgstr ""
 
 #. Default: "This will add additionals fields to MailServices form to add mail address manually."
-#: ./browser/controlpanel.py:42
+#: ./browser/controlpanel.py:37
 msgid "help_mailservices_additionals"
 msgstr ""
 
 #. Default: "Default body message. You can use ${portal_title}, ${object_title}, ${object_url} to replace with values."
-#: ./browser/controlpanel.py:59
+#: ./browser/controlpanel.py:52
 msgid "help_mailservices_body"
 msgstr ""
 
 #. Default: "Default subject. You can use ${portal_title}, ${object_title}, ${object_url} to replace with values."
-#: ./browser/controlpanel.py:50
+#: ./browser/controlpanel.py:45
 msgid "help_mailservices_subject"
 msgstr ""
 
 #. Default: "The body of your email."
-#: ./browser/forms.py:53
+#: ./browser/forms.py:54
 msgid "help_message"
 msgstr ""
 
 #. Default: "The subject of your email."
-#: ./browser/forms.py:48
+#: ./browser/forms.py:49
 msgid "help_subject"
 msgstr ""
 
 #. Default: "Select users to send mail."
-#: ./browser/mailservices.pt:263
+#: ./browser/mailservices.pt:264
 msgid "help_users"
 msgstr ""
 
-#. Default: "Would you like Adminstrator of this Plone Site receive all mails ?"
-#: ./browser/controlpanel.py:32
+#. Default: "Would you like the Administrator of this Plone Site receive all mails ?"
+#: ./browser/controlpanel.py:27
 msgid "label_admin_bcc"
 msgstr ""
 
 #. Default: "Group"
-#: ./browser/mailservices.pt:199
+#: ./browser/mailservices.pt:200
 msgid "label_group"
 msgstr ""
 
 #. Default: "Would you like Users can send mail to additionals recipients ?"
-#: ./browser/controlpanel.py:40
+#: ./browser/controlpanel.py:35
 msgid "label_mailservices_additionals"
 msgstr ""
 
 #. Default: "Message template"
-#: ./browser/controlpanel.py:57
+#: ./browser/controlpanel.py:50
 msgid "label_mailservices_body"
 msgstr ""
 
 #. Default: "Default Subject"
-#: ./browser/controlpanel.py:48
+#: ./browser/controlpanel.py:43
 msgid "label_mailservices_subject"
 msgstr ""
 
 #. Default: "Body"
-#: ./browser/forms.py:51
+#: ./browser/forms.py:52
 msgid "label_message"
 msgstr ""
 
 #. Default: "(Required)"
-#: ./browser/mailservices.pt:112
+#: ./browser/mailservices.pt:113
 msgid "label_required"
 msgstr ""
 
 #. Default: "Select all items"
-#: ./browser/mailservices.pt:208
+#: ./browser/mailservices.pt:209
 msgid "label_select_all_items"
 msgstr ""
 
 #. Default: "Show all"
-#: ./browser/mailservices.pt:180
+#: ./browser/mailservices.pt:181
 msgid "label_showall"
 msgstr ""
 
 #. Default: "Subject"
-#: ./browser/forms.py:46
+#: ./browser/forms.py:47
 msgid "label_subject"
 msgstr ""
 
 #. Default: "User"
-#: ./browser/mailservices.pt:302
+#: ./browser/mailservices.pt:303
 msgid "label_user"
 msgstr ""
 
 #. Default: "Current mailservices recipients groups"
-#: ./browser/mailservices.pt:190
+#: ./browser/mailservices.pt:191
 msgid "summary_mailservices_recipients_groups"
 msgstr ""
 
 #. Default: "Current mailservices recipients users"
-#: ./browser/mailservices.pt:293
+#: ./browser/mailservices.pt:294
 msgid "summary_mailservices_recipients_users"
 msgstr ""
 
 #. Default: "You don't have a valid email address, so you cannot use any contact forms."
-#: ./browser/mailservices.pt:61
+#: ./browser/mailservices.pt:62
 msgid "text_no_usermail_setup"
 msgstr ""
 
 #. Default: "Required"
-#: ./browser/mailservices.pt:112
+#: ./browser/mailservices.pt:113
 msgid "title_required"
 msgstr ""
 
