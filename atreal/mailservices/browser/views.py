@@ -241,7 +241,7 @@ class KSSMailServicesView(base):
 
     @kssaction
     def updateSearchGroup(self, type='', search_term=''):
-        macro_wrapper = ViewPageTemplateFile('macro_group_wrapper.pt', globals()).__of__(self)
+        macro_wrapper = ViewPageTemplateFile('macro_group_wrapper.pt')
         mailservices = getMultiAdapter((self.context, self.request, ), name="mailservices")
 
         # get the html from a macro
@@ -249,12 +249,12 @@ class KSSMailServicesView(base):
 
         the_id = 'group-mailservices'
         macro = self.template.macros[the_id]
-        res = macro_wrapper(the_macro=macro, instance=self.context, view=mailservices)
+        res = macro_wrapper(self, the_macro=macro, instance=self.context, view=mailservices)
         ksscore.replaceHTML(ksscore.getHtmlIdSelector(the_id), res)
 
     @kssaction
     def updateSearchUser(self, search_term=''):
-        macro_wrapper = ViewPageTemplateFile('macro_user_wrapper.pt', globals()).__of__(self)
+        macro_wrapper = ViewPageTemplateFile('macro_user_wrapper.pt')
         mailservices = getMultiAdapter((self.context, self.request, ), name="mailservices")
 
         # get the html from a macro
@@ -262,5 +262,5 @@ class KSSMailServicesView(base):
 
         the_id = 'user-mailservices'
         macro = self.template.macros[the_id]
-        res = macro_wrapper(the_macro=macro, instance=self.context, view=mailservices)
+        res = macro_wrapper(self, the_macro=macro, instance=self.context, view=mailservices)
         ksscore.replaceHTML(ksscore.getHtmlIdSelector(the_id), res)
