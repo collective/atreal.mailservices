@@ -9,6 +9,7 @@
 <body>
 <div metal:fill-slot="body"
      tal:define="context_state context/@@plone_context_state;
+                 portal context/@@plone_portal_state/portal;
                  email_from_address portal/email_from_address;
                  usermail_from_address view/usermail_from_address">
 
