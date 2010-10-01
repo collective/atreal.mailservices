@@ -1,0 +1,226 @@
+# Wouter Vanden Hove <wouter@wvhconsulting.org>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: atreal.mailservices\n"
+"POT-Creation-Date: 2009-10-20 09:31+0000\n"
+"PO-Revision-Date: 2010-10-01 12:00 +ZONE\n"
+"Last-Translator: Wouter Vanden Hove <wouter@wvhconsulting.org>\n"
+"Language-Team: Wouter Vanden Hove <wouter@wvhconsulting.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: atreal.mailservices\n"
+
+#: ./browser/forms.py:69
+msgid "Additionals mails"
+msgstr "Bijkomende mails"
+
+#: ./browser/views.py:55
+msgid "Cc"
+msgstr "Cc"
+
+#. Default: "Groups"
+#: ./browser/mailservices.pt:158
+msgid "Groups"
+msgstr "Groepen"
+
+#: ./browser/forms.py:65
+msgid "Groups & Users"
+msgstr "Groepen & gebruikers"
+
+#: ./browser/forms.py:79
+msgid "Mail Services"
+msgstr "Maildiensten"
+
+#: ./browser/forms.py:269
+msgid "Mail not sent."
+msgstr "Mail is niet verstuurd"
+
+#: ./browser/forms.py:273
+msgid "Mail sent."
+msgstr "Mail is verstuurd"
+
+#. Default: "Mail services"
+#: ./profiles/default/actions.xml
+msgid "Mail services"
+msgstr "Maildienst"
+
+#. Default: "MailServices"
+#: ./profiles/default/controlpanel.xml
+msgid "MailServices"
+msgstr "Maildiensten"
+
+#: ./browser/controlpanel.py:82
+msgid "MailServices settings"
+msgstr "Maildiensten configuratie"
+
+#: ./browser/controlpanel.py:83
+msgid "MailServices settings for this site."
+msgstr "Maildiensten configuratie voor de site"
+
+#. Default: "Search for group"
+#: ./browser/mailservices.pt:164
+msgid "Search for group"
+msgstr "Zoeken naar groep"
+
+#. Default: "Search for user"
+#: ./browser/mailservices.pt:268
+msgid "Search for user"
+msgstr "Zoeken naar gebruiker"
+
+#: ./browser/forms.py:261
+msgid "Send"
+msgstr "Verstuur"
+
+#. Default: "Send this page to specific users"
+#: ./profiles/default/actions.xml
+msgid "Send this page to specific users"
+msgstr "Stuur deze pagina naar specifieke gebruikers"
+
+#: ./browser/views.py:54
+msgid "To"
+msgstr "Naar"
+
+#. Default: "Users"
+#: ./browser/mailservices.pt:262
+msgid "Users"
+msgstr "Gebruikers"
+
+#: ./browser/forms.py:73
+msgid "Write the mail"
+msgstr "Schrijf de mail"
+
+#. Default: "Search"
+#: ./browser/mailservices.pt:173
+msgid "box_search"
+msgstr "Zoeken"
+
+#. Default: "Fill the tabs and valid the form to send an email."
+#: ./browser/forms.py:81
+msgid "description_mailservices"
+msgstr "Vul alle tabbladen in en valideer het formulier om mails te versturen"
+
+#. Default: "Add more direct recipients separated by \";\"."
+#: ./browser/mailservices.pt:375
+msgid "help_additional_recipient_type"
+msgstr "Voeg meer recipiënten toe, gescheiden door \';\'.'"
+
+#. Default: "This will mail each mail sended with MailServices to Portal Administrator."
+#: ./browser/controlpanel.py:34
+msgid "help_admin_bcc"
+msgstr "Stuur elke verstuurde mails eveneens naar de website administrator."
+
+#. Default: "Select groups to send mail."
+#: ./browser/mailservices.pt:159
+msgid "help_groups"
+msgstr "Selecteer groepen om mail naar te versturen"
+
+#. Default: "This will add additionals fields to MailServices form to add mail address manually."
+#: ./browser/controlpanel.py:42
+msgid "help_mailservices_additionals"
+msgstr "Voeg extra veld toe om emailadressen manueel in te geven"
+
+#. Default: "Default body message. You can use ${portal_title}, ${object_title}, ${object_url} to replace with values."
+#: ./browser/controlpanel.py:59
+msgid "help_mailservices_body"
+msgstr "Standaard tekstJe kan ${portal_title}, ${object_title}, ${object_url} gebruiken als variabelen."
+
+#. Default: "Default subject. You can use ${portal_title}, ${object_title}, ${object_url} to replace with values."
+#: ./browser/controlpanel.py:50
+msgid "help_mailservices_subject"
+msgstr "Standaard onderwerp. Je kan ${portal_title}, ${object_title}, ${object_url} gebruiken als variabelen."
+
+#. Default: "The body of your email."
+#: ./browser/forms.py:53
+msgid "help_message"
+msgstr "Tekst van de mail"
+
+#. Default: "The subject of your email."
+#: ./browser/forms.py:48
+msgid "help_subject"
+msgstr "Onderwerp van de mail"
+
+#. Default: "Select users to send mail."
+#: ./browser/mailservices.pt:263
+msgid "help_users"
+msgstr "Selecteer alle gebruikers om mail naar te versturen"
+
+#. Default: "Would you like Administrator of this Plone Site receive all mails ?"
+#: ./browser/controlpanel.py:32
+msgid "label_admin_bcc"
+msgstr "De Administrator van deze site ook alle mails laten ontvangen"
+
+#. Default: "Group"
+#: ./browser/mailservices.pt:199
+msgid "label_group"
+msgstr "Groep"
+
+#. Default: "Would you like Users can send mail to additionals recipients ?"
+#: ./browser/controlpanel.py:40
+msgid "label_mailservices_additionals"
+msgstr "Gebruikers kunnen mails sturen naar andere gebruikers"
+
+#. Default: "Message template"
+#: ./browser/controlpanel.py:57
+msgid "label_mailservices_body"
+msgstr "Bericht template"
+
+#. Default: "Default Subject"
+#: ./browser/controlpanel.py:48
+msgid "label_mailservices_subject"
+msgstr "Standaard onderwerp"
+
+#. Default: "Body"
+#: ./browser/forms.py:51
+msgid "label_message"
+msgstr "Inhoud"
+
+#. Default: "(Required)"
+#: ./browser/mailservices.pt:112
+msgid "label_required"
+msgstr "(Vereist)"
+
+#. Default: "Select all items"
+#: ./browser/mailservices.pt:208
+msgid "label_select_all_items"
+msgstr "Selecteer alle items"
+
+#. Default: "Show all"
+#: ./browser/mailservices.pt:180
+msgid "label_showall"
+msgstr "Toon alle"
+
+#. Default: "Subject"
+#: ./browser/forms.py:46
+msgid "label_subject"
+msgstr "Onderwerp"
+
+#. Default: "User"
+#: ./browser/mailservices.pt:302
+msgid "label_user"
+msgstr "Gebruiker"
+
+#. Default: "Current mailservices recipients groups"
+#: ./browser/mailservices.pt:190
+msgid "summary_mailservices_recipients_groups"
+msgstr "Huidige maildiensten groepen"
+
+#. Default: "Current mailservices recipients users"
+#: ./browser/mailservices.pt:293
+msgid "summary_mailservices_recipients_users"
+msgstr "Huidige maildiensten gebruikers"
+
+#. Default: "You don't have a valid email address, so you cannot use any contact forms."
+#: ./browser/mailservices.pt:61
+msgid "text_no_usermail_setup"
+msgstr "Je hebt geen geldig emailadres, je kan dus geen contactformulier gebruiken."
+
+#. Default: "Required"
+#: ./browser/mailservices.pt:112
+msgid "title_required"
+msgstr "Vereist"
+
