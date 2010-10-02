@@ -162,24 +162,24 @@
                     Select groups to send mail.</div>
 
                 <div class="field">
-                    <input type="text" 
+                    <input type="text"
                            id="mailservices-group-search"
-                           size="30" 
+                           size="30"
                            name="search_group_term"
-                           title="Search for group" 
+                           title="Search for group"
                            i18n:attributes="title"
                            class="searchField inputLabel"
-                           value="" 
+                           value=""
                            />
                     <input type="submit"
-                           id="mailservices-save-group-button" 
+                           id="mailservices-save-group-button"
                            name="form.button.Search"
                            value="Search"
-                           class="searchButton allowMultiSubmit" 
+                           class="searchButton allowMultiSubmit"
                            i18n:attributes="value box_search"
                            />
                     <input type="submit"
-                           id="mailservices-searchall-group-button" 
+                           id="mailservices-searchall-group-button"
                            class="searchButton allowMultiSubmit kssattr-type-searchallgroup"
                            name="form.button.FindAllGroups"
                            value="Show all"
@@ -187,14 +187,14 @@
                            tal:condition="not:site_properties/many_groups"
                            />
                 </div>
-            
+
                 <table metal:define-macro="group-mailservices" id="group-mailservices"
                        class="listing"
                        summary="Current mailservices recipients groups" 
                        i18n:attributes="summary summary_mailservices_recipients_groups;"
                        tal:define="group_settings view/groups_settings;
                                    recipients view/recipients">
-                    
+
                     <thead metal:define-macro="group-mailservices-head" id="group-mailservices-head">
                         <tr tal:condition="python:len(recipients) > 0">
                             <th class="nosort"
@@ -216,7 +216,7 @@
                             </th>
                         </tr>
                     </thead>
-                    
+
                     <tbody metal:define-macro="group-mailservices-settings" id="group-mailservices-settings">
                         <tal:entries repeat="entry group_settings">
                             <tr tal:define="disabled entry/disabled | python:False;
@@ -256,7 +256,7 @@
                         </tal:entries>
                     </tbody>
                 </table>
-            
+
             </div>
 
             <div class="field">

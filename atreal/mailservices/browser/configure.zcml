@@ -2,7 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="atreal.mailservices">
-    
+
     <browser:resource
         name="mailservices_icon.png"
         image="mailservices_icon.png"
@@ -31,7 +31,7 @@
         permission="atreal.mailservices.UseMailServices"
         layer="..interfaces.IMailServicesLayer"
         />
-      
+
     <browser:page
         for="*"
         class=".views.KSSMailServicesView"
@@ -50,5 +50,5 @@
         permission="cmf.ManagePortal"
         layer="..interfaces.IMailServicesLayer"
         />
-        
+
 </configure>
