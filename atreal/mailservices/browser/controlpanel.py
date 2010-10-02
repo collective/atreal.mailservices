@@ -25,7 +25,7 @@ class IMailServicesSchema(Interface):
 
     mailservices_admin_bcc = Bool(
         title=_(u'label_admin_bcc',
-            default=u"Would you like Adminstrator of this Plone Site receive all mails ?"),
+            default=u"Would you like the Administrator of this Plone Site receive all mails?"),
         description=_(u"help_admin_bcc",
             default=u"This will mail each mail sended with MailServices to Portal Administrator."),
         default=True,
@@ -33,7 +33,7 @@ class IMailServicesSchema(Interface):
 
     mailservices_additionals = Bool(
         title=_(u'label_mailservices_additionals',
-            default=u"Would you like Users can send mail to additionals recipients ?"),
+            default=u"Would you like Users can send mail to additionals recipients?"),
         description=_(u"help_mailservices_additionals",
             default=u"This will add additionals fields to MailServices form to add mail address manually."),
         default=False,
