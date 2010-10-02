@@ -1,37 +1,36 @@
 <?xml version="1.0"?>
+
 <object name="portal_actions" meta_type="Plone Actions Tool"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <action-provider name="portal_workflow"/>
- <action-provider name="portal_types"/>
- <action-provider name="portal_actions"/>
- <object name="document_actions" meta_type="CMF Action Category">
-  <property name="title"></property>
-  <object name="advanced_sendto" meta_type="CMF Action"
-     i18n:domain="atreal.mailservices">
-   <property name="title" i18n:translate="">Send this page to specific users</property>
-   <property name="description" i18n:translate=""></property>
-   <property
-      name="url_expr">string:$object_url/@@mailservices</property>
-   <property name="icon_expr"></property>
-   <property name="available_expr"></property>
-   <property name="permissions">
-    <element value="MailServices: Use mailing services"/>
-   </property>
-   <property name="visible">True</property>
+
+
+  <object name="document_actions" meta_type="CMF Action Category">
+    <object name="advanced_sendto" meta_type="CMF Action" i18n:domain="atreal.mailservices">
+      <property name="title" i18n:translate="">Send this page to specific users</property>
+      <property name="description" i18n:translate=""></property>
+      <property name="url_expr">string:$object_url/@@mailservices</property>
+      <property name="icon_expr"></property>
+      <property name="available_expr"></property>
+      <property name="permissions">
+        <element value="MailServices: Use mailing services"/>
+      </property>
+      <property name="visible">True</property>
+    </object>
   </object>
- </object>
-<object name="user" meta_type="CMF Action Category">
-  <object name="mailservices" meta_type="CMF Action"
-     i18n:domain="atreal.mailservices">
-   <property name="title" i18n:translate="">Mail services</property>
-   <property name="description" i18n:translate=""></property>
-   <property name="url_expr">string:$portal_url/@@mailservices</property>
-   <property name="icon_expr"></property>
-   <property name="available_expr"></property>
-   <property name="permissions">
-    <element value="MailServices: Use mailing services"/>
-   </property>
-   <property name="visible">True</property>
+
+
+  <object name="user" meta_type="CMF Action Category">
+    <object name="mailservices" meta_type="CMF Action" i18n:domain="atreal.mailservices">
+      <property name="title" i18n:translate="">Mail services</property>
+      <property name="description" i18n:translate=""></property>
+      <property name="url_expr">string:$portal_url/@@mailservices</property>
+      <property name="icon_expr"></property>
+      <property name="available_expr"></property>
+      <property name="permissions">
+        <element value="MailServices: Use mailing services"/>
+      </property>
+      <property name="visible">True</property>
+    </object>
   </object>
- </object>
+
 </object>

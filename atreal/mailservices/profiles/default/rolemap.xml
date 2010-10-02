@@ -1,10 +1,13 @@
 <?xml version="1.0"?>
 <rolemap>
+
   <permissions>
-    <permission name="MailServices: Use mailing services"
-                acquire="True">
+
+    <permission name="MailServices: Use mailing services" acquire="True">
       <role name="Manager"/>
       <role name="Member"/>
     </permission>
+
   </permissions>
+
 </rolemap>
