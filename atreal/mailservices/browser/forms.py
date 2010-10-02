@@ -30,6 +30,13 @@ from atreal.mailservices.browser.views import MailServicesView
 from atreal.mailservices import MailServicesMessageFactory as _
 #from atreal.mailservices.browser.controlpanel import IMailServicesSchema
 
+try:
+    # Plone 4 and higher
+    import plone.app.upgrade
+    PLONE_VERSION = 4
+except ImportError:
+    PLONE_VERSION = 3
+
 
 class IMailServicesGroupsUsersSchema(Interface):
     """
@@ -246,16 +253,30 @@ class MailServicesForm(MailServicesView, FieldsetsInputForm):
 
         result = {}
         try:
-            host.secureSend(self.request.form['form.body'],
-                            mails['to'],
-                            mails['admin'],
-                            mbcc=mails['bcc'],
-                            subject=self.request.form['form.subject'],
-                            mcc=mails['cc'],
-                            subtype='plain',
-                            charset=encoding,
-                            debug=False,
-                            From=mails['from'])
+            if PLONE_VERSION >= 4:
+                host.send(self.request.form['form.body'],
+                                mails['to'],
+                                mails['admin'],
+                                #mbcc=mails['bcc'],
+                                subject=self.request.form['form.subject'],
+                                #mcc=mails['cc'],
+                                #subtype='plain',
+                                msg_type='text/plain',
+                                charset=encoding,
+                                #debug=False,
+                                #From=mails['from'])
+                                )
+            else:
+                host.secureSend(self.request.form['form.body'],
+                                mails['to'],
+                                mails['admin'],
+                                mbcc=mails['bcc'],
+                                subject=self.request.form['form.subject'],
+                                mcc=mails['cc'],
+                                subtype='plain',
+                                charset=encoding,
+                                debug=False,
+                                From=mails['from'])
         except Exception, e:
             result['email']=e.__class__.__name__+' : '+str(e)
         return result
