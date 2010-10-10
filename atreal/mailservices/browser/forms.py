@@ -30,6 +30,9 @@ from atreal.mailservices.browser.views import MailServicesView
 from atreal.mailservices import MailServicesMessageFactory as _
 #from atreal.mailservices.browser.controlpanel import IMailServicesSchema
 
+from email import message_from_string
+from email.Header import Header
+
 try:
     # Plone 4 and higher
     import plone.app.upgrade
@@ -254,18 +257,24 @@ class MailServicesForm(MailServicesView, FieldsetsInputForm):
         result = {}
         try:
             if PLONE_VERSION >= 4:
-                host.send(self.request.form['form.body'],
-                                mails['to'],
-                                mails['admin'],
-                                #mbcc=mails['bcc'],
-                                subject=self.request.form['form.subject'],
-                                #mcc=mails['cc'],
-                                #subtype='plain',
-                                msg_type='text/plain',
-                                charset=encoding,
-                                #debug=False,
-                                #From=mails['from'])
-                                )
+                message_body = self.request.form['form.body']
+                my_message = message_from_string(message_body.encode(encoding))
+                my_message.set_charset(encoding)
+
+                if mails['cc']:
+                    my_message['CC']= Header(mails['cc'])
+                if mails['bcc']:
+                    my_message['BCC']= Header(mails['bcc'])
+                if mails['from']:
+                    my_message['From']= Header(mails['from'])
+
+                host.send(my_message,
+                          mto=mails['to'],
+                          mfrom=mails['admin'],
+                          subject=self.request.form['form.subject'],
+                          charset=encoding,
+                          msg_type='text/plain',
+                          )
             else:
                 host.secureSend(self.request.form['form.body'],
                                 mails['to'],
