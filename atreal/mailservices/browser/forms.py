@@ -154,7 +154,7 @@ class MailServicesForm(MailServicesView, FieldsetsInputForm):
     def update(self):
         processInputs(self.request)
         setPageEncoding(self.request)
-        super(FiveFormlibMixin, self).update()
+        super(MailServicesForm, self).update()
 
     def getMailForUserById(self, user_id = ""):
         """
