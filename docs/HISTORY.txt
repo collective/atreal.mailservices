@@ -7,9 +7,11 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
+- Fix Plone 4.1 compatibility. [thomasdesvenain]
+
 - Fix KSSViews. [WouterVH]
 
-- Fix Plone4-compatibility. [WouterVH]
+- Fix Plone 4.0 compatibility. [WouterVH]
 
 - Fix configlet-icon in Plone4. [WouterVH]
 
