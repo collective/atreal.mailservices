@@ -7,12 +7,6 @@ from zope.component import getMultiAdapter
 
 from Products.Five.browser.pagetemplatefile import ZopeTwoPageTemplateFile
 from Products.Five.browser.decode import setPageEncoding
-try:
-    # Plone 4.0+
-    from five.formlib.formbase import FiveFormlibMixin
-except ImportError:
-    # Plone 3.x, Plone 4.0
-    from Products.Five.formlib.formbase import FiveFormlibMixin
 #from Products.Five import BrowserView
 
 from Products.CMFPlone.utils import safe_unicode
