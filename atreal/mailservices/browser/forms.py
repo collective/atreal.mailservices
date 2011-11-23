@@ -261,9 +261,9 @@ class MailServicesForm(MailServicesView, FieldsetsInputForm):
                 my_message.set_charset(encoding)
 
                 if mails['cc']:
-                    my_message['CC']= Header(mails['cc'])
+                    my_message['CC']= Header(','.join(mails['cc']))
                 if mails['bcc']:
-                    my_message['BCC']= Header(mails['bcc'])
+                    my_message['BCC']= Header(','.join(mails['bcc']))
                 if mails['from']:
                     my_message['From']= Header(mails['from'])
 
