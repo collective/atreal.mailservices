@@ -7,7 +7,7 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
-- Plone 4 Compatibility : Uptade CMF core permissions declaration in ZCML [rbeylerian]
+- Plone 4 Compatibility : Update CMF core permissions declaration in ZCML [rbeylerian]
 
 - Fix Plone 4.1 compatibility. [thomasdesvenain]
 
@@ -25,6 +25,8 @@ Changelog
   Plone 3.3+. [WouterVH]
 
 - Pyflakes cleanup. [WouterVH]
+
+- Fix CC's send issue [tiazma]
 
 
 1.0.0 (2010-02-04)
