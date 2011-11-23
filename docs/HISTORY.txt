@@ -7,6 +7,8 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
+- Plone 4 Compatibility : Uptade CMF core permissions declaration in ZCML [rbeylerian]
+
 - Fix Plone 4.1 compatibility. [thomasdesvenain]
 
 - Fix KSSViews. [WouterVH]
