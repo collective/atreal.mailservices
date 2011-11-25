@@ -4,10 +4,16 @@ Changelog
 (name of developer listed in brackets)
 
 
-1.0.1 (unreleased)
+1.1.0 (unreleased)
 ------------------
 
-- Plone 4 Compatibility : Update CMF core permissions declaration in ZCML [rbeylerian]
+- Fix Plone 3.2 compatibility : added z3c.autoinclude in setup.py
+  install_requires list. [rbeylerian]
+
+- Fix CC's send issue. [tiazma]
+
+- Fox Plone 4.1 compatibility : Update CMF core permissions declaration in ZCML.
+  [rbeylerian]
 
 - Fix Plone 4.1 compatibility. [thomasdesvenain]
 
@@ -25,8 +31,6 @@ Changelog
   Plone 3.3+. [WouterVH]
 
 - Pyflakes cleanup. [WouterVH]
-
-- Fix CC's send issue [tiazma]
 
 
 1.0.0 (2010-02-04)

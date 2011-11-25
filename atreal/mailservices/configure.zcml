@@ -5,6 +5,9 @@
   xmlns:i18n="http://namespaces.zope.org/i18n"
   i18n_domain="atreal.mailservices">
 
+  <!-- Make the z3c.autoinclude directives available -->
+  <include package="z3c.autoinclude" file="meta.zcml" />
+
   <five:registerPackage package="." initialize=".initialize" />
 
   <!-- Include configuration for dependencies listed in setup.py -->
@@ -27,7 +30,5 @@
       directory="profiles/default"
       description="MailServices allowing to send a mail to portal's users and groups."
       provides="Products.GenericSetup.interfaces.EXTENSION" />
-
-
 
 </configure>

@@ -4,7 +4,7 @@ import os
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
-version = '1.0.0'
+version = '1.1.0dev'
 
 long_description = (
     read('README.txt')
@@ -36,6 +36,7 @@ setup(name='atreal.mailservices',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'z3c.autoinclude',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
