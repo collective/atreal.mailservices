@@ -1,15 +1,13 @@
-==================================
-atreal.mailservices Package Readme
-==================================
+.. contents::
 
 Overview
---------
+========
 
 MailServices allows to send emails to portal's users and groups.
 
 
 Description
------------
+===========
 
 * This very lightweight plone product let's you mailing people from your
  portal, by groups or by selecting users.
@@ -34,13 +32,13 @@ Description
  
  
 Important
----------
+=========
 
 Permission is set for 'Manager and 'Member'
 
 
 Note
-----
+====
 
 Bcc support is currently implemented in a branche. However, due to MailHost behaviour,
 all recipients can see the bcc list.
@@ -48,23 +46,39 @@ We are working on this issue, feel free to send your proposals in case you have 
 
 
 Authors
--------
+=======
 
-:atReal Team - contac@atreal.net :
-Matthias Broquet <tiazma>
-Florent Michon <f10w>
+|atreal|_
+
+* `atReal Team`_
+
+  - Matthias Broquet [tiazma]
+  - Florent Michon [f10w]
+
+.. |atreal| image:: http://www.atreal.fr/medias/atreal-logo-48.png
+.. _atreal: http://www.atreal.fr/
+.. _atReal Team: mailto:contact@atreal.fr
+
+
+Contributors
+============
+
+* `atReal Team`_
+
+  - Romain BEYLERIAN [rbeylerian]
+
+  .. _atReal Team: mailto:contact@atreal.fr
 
 
 Credits
--------
+=======
 
 * Sponsorised by ML-COM - www.ml-com.com (and some international research labs)
 
 
 TODO
-----
+====
 
 * Make BCC mailing work.
 * Modify template mechanism to adopt the same granularity that's provided in 
   collective.contentrule.mail.
-

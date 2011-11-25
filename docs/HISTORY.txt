@@ -4,7 +4,7 @@ Changelog
 (name of developer listed in brackets)
 
 
-1.1.0 (unreleased)
+1.1.0 (2011-11-25)
 ------------------
 
 - Fix Plone 3.2 compatibility : added z3c.autoinclude in setup.py
