@@ -10,14 +10,14 @@ Description
 ===========
 
 * This very lightweight plone product let's you mailing people from your
- portal, by groups or by selecting users.
+  portal, by groups or by selecting users.
 
 * It equally allows you to mail people that are'nt members of the portals,
- but WITHOUT ANY VERIFICATION! (for the moment).
+  but WITHOUT ANY VERIFICATION! (for the moment).
 
 * Otherwise, it adds a document action, which works in the
- same way that classic plone 'send_to' action, but let's you choosing your
- target by scanning the portal groups/users.
+  same way that classic plone 'send_to' action, but let's you choosing your
+  target by scanning the portal groups/users.
 
 * It also adds an user action, which works in the same way as described above.
 
@@ -62,6 +62,11 @@ Authors
 
 Contributors
 ============
+
+* `Thanks to`
+
+    - Thomas DESVENAIN [thomasdesvenain]
+    - Wouter VANDEN HOVE [WouterVH]
 
 * `atReal Team`_
 
