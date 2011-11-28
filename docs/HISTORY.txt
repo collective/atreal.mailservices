@@ -3,6 +3,11 @@ Changelog
 
 (name of developer listed in brackets)
 
+1.1.1 (2011-11-28)
+------------------
+
+- Fix Plone 4 compatibility : update action icons declaration. [rbeylerian]
+
 
 1.1.0 (2011-11-25)
 ------------------
